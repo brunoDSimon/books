@@ -1,0 +1,142 @@
+@import "~bootstrap/scss/functions";
+
+/*** 
+// Grids
+***/
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+$container-max-widths: (
+  sm: 420px,
+  md: 720px,
+  lg: 960px,
+  xl: 1340px
+);
+
+
+
+$btn-border-radius: 25rem;
+$border-radius-sm: 25rem;
+
+$Vermelho: #DE3131;
+$VermelhoClaro: lighten($Vermelho, 20%) !default;
+$VermelhoEscuro: #dc3545;
+$Roxo: #6B286B;
+$RoxoEscuro: #501e50;
+// $Roxo: #501e50;
+$Bege: #e5e0d1;
+$Cinza: #282828;
+$appCinza: #4f4f4f;
+$Azul: #17a2b8;
+$Verde: #539656;
+$Amarelo: #ffc107;
+$Gold: #AB7B13;
+$Dark: #343a40;
+$Light: #f8f9fa;
+$Laranja: #F29549;
+
+//Uso primário
+$peach: #EE9797;
+$salt: #FCEAEA;
+$violet: #6B286B;
+$periwinkle: #B493B4;
+$cloud:#D9C8D9;
+$white: #FFFFFF;
+
+//Uso secundário
+$ash: #4F4F4F;
+$coin: #939393;
+$salt-grey: #E3E3E3;
+$light-grey: #F4F4F4;
+//Em conteúdo textual - Elementos de UI
+
+
+$tangerine: #F29549;
+$sepia:#F8CAA3;
+$lace: #FEF4EC;
+$emerald: #539656;
+$pistachio: #A8CAAA;
+$chiffon: #EDF4EE;
+//Casos de erro/falha, iconografia, snacks… - Elementos de UI
+
+/*** 
+// Tons de cinza
+***/
+
+$cinza-white-up: lighten($Cinza, 88%) !default;
+$cinza-extra-light: lighten($Cinza, 80%) !default;
+$cinza-light: lighten($Cinza, 60%) !default;
+$cinza-neutral: #666666 !default;//lighten($Cinza, 40%) !default;
+$cinza-semi-light: #999999 !default;
+$cinza-extra-dark: #444444 !default;
+
+$bg-cinza: #e7e7e7 !default;
+
+$bgGlobal: #FEFEFE;
+$bgNavbar:#f9f9f9;
+
+$theme-colors: (
+  // "primary":#f4516c,
+  "primary": $Vermelho,
+  "secondary": $Roxo,
+  "success": $Verde,
+  "info": $Azul,
+  "warning": $Amarelo,
+  "danger": $Laranja,
+  "light": $Light,
+  "dark": $Dark,
+  "vermelho": $Vermelho,
+  "laranja": $Laranja,
+  "branco": $bgGlobal,
+  "roxo": $Roxo,
+  "bege": $Bege,
+  "cinza": $Cinza,
+  "gold": $Gold,
+  
+  "ash": $ash,
+  "coin": $coin,
+  "salt-grey": $salt-grey,
+  "light-grey": $light-grey,
+
+
+  "cinza-neutral": $cinza-neutral,
+  "cinza-extra-dark": $cinza-extra-dark,
+  "appdark": $cinza-extra-dark,
+  "cinza-semi-light": $cinza-semi-light,
+  "semi-dark": $cinza-neutral,
+  "bg-cinza": $bg-cinza
+);
+
+// $font-family-sans-serif: "Calibri" !default;
+
+
+
+@import "~bootstrap/scss/variables";
+
+$fonte-sizesExtraExtraSmall: ($font-size-base * .50) !default;
+
+$fonte-sizesExtraExtraSmallPlus: ($font-size-base * .65) !default;
+
+// 12px
+$fonte-sizesExtraSmall: ($font-size-base * .75) !default;
+
+// 14px
+$font-size-sm: ($font-size-base * .875) !default;
+
+// 15px
+$fonte-sizesSmallPlus: ($font-size-base * .9375) !default;
+
+// 16px
+$fonte-sizesMedium: $font-size-base !default;
+
+// 20px | $font-size-lg = ($font-size-base * 1.25 )
+$fonte-sizesExtraMedium: $font-size-lg !default;
+
+// 24px
+$fonte-sizesLarge: ($font-size-base * 1.5) !default;
+
+// 32px
+$fonte-sizesExtraLarge:  ($font-size-base * 2.0) !default;
+
+$text-muted: $cinza-semi-light;

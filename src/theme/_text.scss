@@ -1,0 +1,129 @@
+.text-xxs {
+    font-size: $fonte-sizesExtraExtraSmall!important;
+}
+.text-xxsp {
+    font-size: $fonte-sizesExtraExtraSmallPlus!important;
+}
+.text-xs {
+    font-size: $fonte-sizesExtraSmall!important;
+}
+
+.text-sm {
+    font-size: $font-size-sm!important;
+}
+
+.text-sp {
+    font-size: $fonte-sizesSmallPlus!important;
+    &.text-color{
+        color: #212529 !important;
+    }
+}
+
+.text-m {
+    font-size: $fonte-sizesMedium!important;
+}
+
+.text-xm {
+    font-size: $fonte-sizesExtraMedium!important;
+}
+
+.text-l {
+    font-size: $fonte-sizesLarge!important;
+}
+
+.text-lx {
+    font-size: $fonte-sizesExtraLarge!important;
+}
+
+@media (max-width: 719px) {
+    .text-xxs-mobile {
+        font-size: $fonte-sizesExtraExtraSmall!important;
+    }
+
+    .text-xxsp-mobile {
+        font-size: $fonte-sizesExtraExtraSmallPlus!important;
+    }
+
+    .text-xs-mobile {
+        font-size: $fonte-sizesExtraSmall!important;
+    }
+    
+    .text-sp-mobile {
+        font-size: $fonte-sizesSmallPlus!important;
+    }
+    
+    .text-m-mobile {
+        font-size: $fonte-sizesMedium!important;
+    }
+    
+    .text-l-mobile {
+        font-size: $fonte-sizesLarge!important;
+    }
+    
+    .text-lx-mobile {
+        font-size: $fonte-sizesExtraLarge!important;
+    }
+}
+
+.text-left {
+    &-mobile {
+        @media (max-width: 719px) {
+            text-align: left !important;
+        }
+    }
+    &-tablet {
+        @media (min-width: 720px) and (max-width: 1339px) {
+            text-align: left !important;
+        }
+    }
+}
+.text-center {
+    &-mobile {
+        @media (max-width: 719px) {
+            text-align: center !important;
+        }
+    }
+    &-tablet {
+        @media (min-width: 720px) and (max-width: 1339px) {
+            text-align: center !important;
+        }
+    }
+}
+.text-right {
+    &-mobile {
+        @media (max-width: 719px) {
+            text-align: right !important;
+        }
+    }
+    &-tablet {
+        @media (min-width: 720px) and (max-width: 1339px) {
+            text-align: right !important;
+        }
+    }
+}
+
+.text-del {
+    text-decoration: line-through;
+}
+
+.text-em-processamento {
+    color: #daa468;
+}
+
+.text-alert {
+    color: #ffcb01 !important;
+}
+
+.text-title-highligh {
+    color: #6a6669;
+}
+
+.text-va-t {
+    vertical-align: top;
+}
+.text-va-m {
+    vertical-align: middle;
+}
+.text-va-b {
+    vertical-align: bottom;
+}

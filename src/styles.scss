@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+@import "theme/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+// @import "~bootstrap/scss/forms";
+// @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+// @import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+@import '~bootstrap/dist/css/bootstrap';
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "theme/card";
+@import "theme/button";
+@import "theme/text";
+@import "theme/icons";
+@import "theme/form";
+body{
+    width: 100%;
+    padding-top:70px;
+    background-color: $bg-cinza;
+    font-family: Calibri, KievitOT;
+    background-image: url('/assets/fundo.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+
+    @media (max-width: 540px) {
+      font-size: 10px !important;
+    }
+    @media (max-width: 720px) {
+      font-size: 12px !important;
+    }
+    @media (max-width: 960px) {
+      font-size: 13px !important;
+    }
+    @media (max-width: 1140px) {
+      font-size: 14px !important;
+    }
+}
+
+
+.container-centralized {
+    max-width: 1300px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    @media (max-width: 2560px) {
+      max-width: 2500px;
+    }
+    @media (max-width: 1440px) {
+      max-width: 1400px;
+    }
+    @media (max-width: 1360px) {
+      max-width: 1300px;
+    }
+}
+$grid-columns:      12;
+$grid-gutter-width: 30px;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);

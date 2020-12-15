@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <div class="container">
+    <a class="navbar-brand font-weight-lighter" href="#">Souza Simon</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a [routerLink]="['/financeiro']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+            Financeiro
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/financeiro/adicionar-empresa']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+            Empresas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/financeiro/adicionar-modelo']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+            Adicionar Modelo
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/financeiro/list-producao']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+            Produção
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+            Dashboard
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

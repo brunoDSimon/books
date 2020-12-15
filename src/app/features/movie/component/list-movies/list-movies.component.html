@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-6 mb-2" *ngFor="let aux of dados; index as i">
+    <div class="card h-100">
+        <div class="card-body">
+          <h4 class="card-title text-primary">
+            <em class="ic-movie mr-2"></em>
+            {{aux?.title}}
+            <span class="badge badge-success">{{aux?.vote_average}}</span>
+          </h4>
+          <div class="tamanho">
+            <div class="row">
+              <div class="col-6 ">
+                <img class="h-50" src="https://image.tmdb.org/t/p/w500{{aux.poster_path}}" alt="">
+              </div>
+              <div class="col-6 ">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-12 text-sm mb-2">
+                        <span class="text-muted">Lançamento:</span>
+                        {{aux?.release_date | date}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 ">
+                    <div class="row">
+                      <div class="col-12 text-muted text-sm">Sobre:</div>
+                      <div class="col-12 text-sm text-dark">{{aux?.overview}}</div>
+                    </div>
+                   </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <button class="btn btn-outline-info">Ver mais</button>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</div>

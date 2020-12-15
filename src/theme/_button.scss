@@ -1,0 +1,167 @@
+@import "variables";
+
+.btn:not(.btn-link){
+    text-transform: uppercase;
+}
+
+.btn-lg, .btn-sm {
+    border-radius: 24px !important;
+}
+
+[class*='btn'] {
+  cursor: pointer;
+  &:disabled {
+    cursor: unset;
+  }
+}
+
+.btn-outline-primary:focus,
+.btn-outline-secondary:focus,
+.btn-outline-info:focus,
+.btn-outline-warning:focus,
+.btn-outline-success:focus,
+.btn-outline-danger:focus,
+.btn-outline-dark:focus,
+.btn-outline-light:focus,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-secondary:focus,
+.btn-secondary.focus,
+.btn-info:focus,
+.btn-info.focus,
+.btn-warning:focus,
+.btn-warning.focus,
+.btn-success:focus,
+.btn-success.focus,
+.btn-danger:focus,
+.btn-danger.focus,
+.btn-dark:focus,
+.btn-dark.focus,
+.btn-outline-semi-dark:focus,
+.btn-outline-semi-dark.focus,
+.btn-light:focus,
+.btn-light.focus
+{
+  box-shadow: none!important;
+}
+.btn-outline-primary:active,
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+  color: $Vermelho!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Vermelho!important;
+}
+.btn-outline-secondary:active,
+.btn-outline-secondary:not(:disabled):not(.disabled):active {
+  color: $Roxo!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Roxo!important;
+}
+.btn-outline-info:active,
+.btn-outline-info:not(:disabled):not(.disabled):active {
+  color: $Azul!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Azul!important;
+}
+.btn-outline-warning:active,
+.btn-outline-warning:not(:disabled):not(.disabled):active {
+  color: $Amarelo!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Amarelo!important;
+}
+.btn-outline-success:active,
+.btn-outline-success:not(:disabled):not(.disabled):active {
+  color: $Verde!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Verde!important;
+}
+.btn-outline-danger:active,
+.btn-outline-danger:not(:disabled):not(.disabled):active {
+  color: $VermelhoEscuro!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $VermelhoEscuro!important;
+}
+.btn-outline-dark:active,
+.btn-outline-dark:not(:disabled):not(.disabled):active {
+  color: $Dark!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Dark!important;
+}
+.btn-outline-light:active,
+.btn-outline-light:not(:disabled):not(.disabled):active {
+  color: $Light!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $Light!important;
+}
+.btn-outline-semi-dark:active,
+.btn-outline-semi-dark:not(:disabled):not(.disabled):active {
+  color: $cinza-neutral!important;
+  background-color: transparent!important;
+  background-image: none!important;
+  border-color: $cinza-neutral!important;
+}
+
+.btn-sm {
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.btn-outline-primary {
+
+  &.btn-active,
+  &:not(.no-border):hover,
+  &:not(.no-border):active,
+  &:not(.no-border):focus,
+
+  &.btn-active,
+  &.btn-active:active {
+    background: #F00;
+    color: #fff;
+  }
+
+  &.no-border {
+    border: none;
+
+    &:hover {
+      color: #f00;
+      background: none;
+    }
+  }
+
+}
+.btn-outline-none,
+.btn-outline-none:active,
+.btn-outline-none:focus,
+.btn-outline-none:not(:disabled):active {
+  border-radius: 0px;
+  color: #444;
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.btn-link{
+  &-default {
+    text-decoration: underline;
+    color: #007bff;
+  }
+}
+
+.btn {
+  .hide-text-on-mobile {
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+  &.no-uppercase {
+    text-transform: none;
+  }
+}

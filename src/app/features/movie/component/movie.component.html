@@ -1,0 +1,40 @@
+<div class="container container-centralized" #container>
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="..." class="float-right">
+        <ul class="pagination">
+          <li class="page-item " [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active" >
+            <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item" (click)="next()"  [attr.disabled]="pageMax >= page ? false : true" [ngClass]="{'disabled': pageMax >= page ? false : true}">
+            <a class="page-link" >Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <app-list-movies [dados]="listMovie"></app-list-movies>
+    <div class="col-12">
+      <nav aria-label="..." class="float-right">
+        <ul class="pagination">
+          <li class="page-item " [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active" >
+            <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item" (click)="next()"  [attr.disabled]="pageMax >= page ? false : true" [ngClass]="{'disabled': pageMax >= page ? false : true}">
+            <a class="page-link" >Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
