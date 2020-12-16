@@ -8,13 +8,13 @@
 @import "~bootstrap/scss/code";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
-// @import "~bootstrap/scss/forms";
-// @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/button-group";
 @import "~bootstrap/scss/input-group";
-// @import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
 @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/card";
@@ -44,25 +44,10 @@
 @import "theme/form";
 body{
     width: 100%;
-    padding-top:70px;
+    padding-top: 120px;
     background-color: $bg-cinza;
     font-family: Calibri, KievitOT;
-    background-image: url('/assets/fundo.jpg');
-    background-repeat: no-repeat;
-    background-position:center;
 
-    @media (max-width: 540px) {
-      font-size: 10px !important;
-    }
-    @media (max-width: 720px) {
-      font-size: 12px !important;
-    }
-    @media (max-width: 960px) {
-      font-size: 13px !important;
-    }
-    @media (max-width: 1140px) {
-      font-size: 14px !important;
-    }
 }
 
 
@@ -80,25 +65,3 @@ body{
       max-width: 1300px;
     }
 }
-$grid-columns:      12;
-$grid-gutter-width: 30px;
-
-$grid-breakpoints: (
-  // Extra small screen / phone
-  xs: 0,
-  // Small screen / phone
-  sm: 576px,
-  // Medium screen / tablet
-  md: 768px,
-  // Large screen / desktop
-  lg: 992px,
-  // Extra large screen / wide desktop
-  xl: 1200px
-);
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px
-);

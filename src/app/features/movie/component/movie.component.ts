@@ -26,7 +26,7 @@ export class MovieComponent implements OnInit {
   }
 
   get listMovie() {
-    return this._listMovie;
+    return this._listMovie.sort((a, b) => {return b.vote_average - a.vote_average });
   }
 
   get page() {

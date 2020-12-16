@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UsersDataService } from 'src/app/shared/service/UsersData.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('search') searchField: ElementRef;
   private _open:boolean = false;
   private _logado:boolean = false;
   constructor(
@@ -24,6 +25,15 @@ export class HeaderComponent implements OnInit {
     return this._open
   }
   public abri(){
-    return this._open =! this._open
+    this._open = true;
+    const search = this.searchField;
+    setTimeout(() => {
+      search.nativeElement.focus()
+    }, 350);
+  }
+
+  public hideSearch() {
+    this._open = false;
+    this.searchField.nativeElement.value = '';
   }
 }

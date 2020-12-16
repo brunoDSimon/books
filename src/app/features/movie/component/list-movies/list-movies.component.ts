@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,9 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ListMoviesComponent implements OnInit {
   @Input() dados: any = [];
 
-  constructor() { }
+  constructor(
+  private route: Router,
+  ) { }
 
   ngOnInit() {
   }
 
+
+  public redirect(aux) {
+    this.route.navigate([`/movie/detalhe/${aux}`])
+  }
 }

@@ -10,7 +10,7 @@
         cursor: pointer;
         width: 100%;
         height: 100%;
-        display: block;
+        display: inline-block;
     }
     &-calendario{
         background-image: url('/assets/calendario.svg');
@@ -73,5 +73,22 @@
     padding: 8px;
     cursor: pointer;
     display: inline;
-}
+  }
+  &-search{
+    background-image: url('/assets/bootstrap-icons-1.2.0/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 8px;
+    cursor: pointer;
+    display: inline;
+  }
+  &-close{
+    background-image: url('/assets/cancel.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 4px;
+    cursor: pointer;
+    display: inline;
+  }
+
 }

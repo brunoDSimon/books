@@ -1,3 +1,4 @@
+import { DetailComponent } from './component/detail/detail.component';
 import { ListMoviesComponent } from './component/list-movies/list-movies.component';
 import { MovieComponent } from './component/movie.component';
 import { SharedModule } from './../../shared/modules/shared.module';
@@ -32,11 +33,12 @@ import { MovieRoutingModule } from './movie-routing.module';
     CustomFormsModule,
     NgbModule,
     QRCodeModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   declarations: [
     MovieComponent,
-    ListMoviesComponent
+    ListMoviesComponent,
+    DetailComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

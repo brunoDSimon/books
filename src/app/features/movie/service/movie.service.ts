@@ -11,7 +11,7 @@ import { DefaultResponse } from 'src/app/shared/models/default-response.mode';
   providedIn: 'root'
 })
 export class MovieService extends Service{
-
+  private _token: string = '67cee93b4d897d58007f440ce2fee181';
 constructor(
   private http: HttpClient,
 ) {
@@ -22,7 +22,18 @@ constructor(
       page: page
     }
     const filtro = new URLSearchParams(params).toString();
-    return this.http.get(environment.api_url+`/movie/popular?api_key=67cee93b4d897d58007f440ce2fee181&language=pt-br&`+filtro, {headers: this.headers}).pipe(
+    return this.http.get(environment.api_url+`/movie/popular?api_key=${this._token}&language=pt-br&`+filtro, {headers: this.headers}).pipe(
+      map(res =>{
+        return res
+      }),catchError((error: any) => {
+          throw this.handleError(error);
+        }
+      )
+    )
+  }
+
+  public getDetailMovie(id):Observable<any>{
+    return this.http.get(environment.api_url+`/movie/${id}?api_key=${this._token}&language=pt-br`, {headers: this.headers}).pipe(
       map(res =>{
         return res
       }),catchError((error: any) => {

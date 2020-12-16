@@ -1,13 +1,8 @@
 @import "variables";
 
 .form-control {
-    height: auto;
-    padding: 15px;
-    font-size: 14px;
-    color: #222222;
-    border-radius: 0;
-    background: #FDFDFD;
-    border: 1px solid #312BC6 !important;
+  width: 100%;
+    font-size: 16px;
     cursor: pointer;
   }
   .custom-select {
@@ -18,29 +13,101 @@
       font-weight: 400;
       color: #222222;
       background-color: #FDFDFD;
-      border: 1px solid #312BC6 !important;
+      border: 1px solid #DE3131 !important;
     }
-    
+
     .custom-control-input:checked~.custom-control-label::before {
       border-color: #E91E63 !important;
       background-color: #E91E63 !important;
     }
-    
+
     .custom-control-input:focus~.custom-control-label::before {
       box-shadow: none;
     }
-    
+
     .custom-control-label {
       cursor: pointer;
     }
-    
+
     .error:focus,
     .error {
       border-color: #E91E63 !important;
       color: #E91E63 !important;
     }
-    
+
     .invalid-feedback {
       color: #E91E63 !important;
     }
-    
+
+.input.form-control {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &:focus{
+    border-bottom: 1px solid #ccc;
+    color: #501e50;
+    box-shadow: none;
+  }
+}
+
+.input-bar-slide {
+  .bar {
+    position: absolute !important;
+    display: inline-block;
+    width: 100%;
+    bottom: 0px !important;
+    z-index: 3 !important;
+    left: 0;
+    right: 0;
+    margin-left: -100%;
+  }
+
+  .bar:before {
+    content: '' !important;
+    height: 2px !important;
+    width: 0 !important;
+    bottom: 0px !important;
+    position: absolute !important;
+    background:  #DE3131 !important;
+    transition: 0.8s ease all !important;
+    -moz-transition:0.8s ease all !important;
+    -webkit-transition: 0.8s ease all !important;
+  }
+
+  .bar:before{
+    left: 100% !important;
+  }
+
+  input:focus ~ .bar:before{
+    width: 100% !important;
+  }
+  .input-group-append {
+    right: 0;
+    position: absolute;
+    top: 1px;
+    z-index: 4;
+    border-bottom: none;
+    background-color: transparent;
+    .input-group-text{
+      border-bottom: none;
+    }
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+div:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: $coin !important;
+}
+
+*:-webkit-autofill {
+  background-color: transparent !important;
+}
