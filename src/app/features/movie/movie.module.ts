@@ -1,3 +1,4 @@
+import { ListDetailComponent } from './component/list-detail/list-detail.component';
 import { DetailComponent } from './component/detail/detail.component';
 import { ListMoviesComponent } from './component/list-movies/list-movies.component';
 import { MovieComponent } from './component/movie.component';
@@ -38,7 +39,8 @@ import { MovieRoutingModule } from './movie-routing.module';
   declarations: [
     MovieComponent,
     ListMoviesComponent,
-    DetailComponent
+    DetailComponent,
+    ListDetailComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

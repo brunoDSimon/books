@@ -32,8 +32,50 @@ constructor(
     )
   }
 
+  public getTrending(page, type, date): Observable<any>{
+    const params = {
+      page: page
+    }
+    const filtro = new URLSearchParams(params).toString();
+    return this.http.get(environment.api_url+`/trending/${type}/${date}?api_key=${this._token}&`+ filtro ,{headers: this.headers}).pipe(
+      map(res =>{
+        return res
+      }),catchError((error: any) => {
+          throw this.handleError(error);
+        }
+      )
+    )
+  }
+
   public getDetailMovie(id):Observable<any>{
     return this.http.get(environment.api_url+`/movie/${id}?api_key=${this._token}&language=pt-br`, {headers: this.headers}).pipe(
+      map(res =>{
+        return res
+      }),catchError((error: any) => {
+          throw this.handleError(error);
+        }
+      )
+    )
+  }
+
+  public getRecommendation(id):Observable<any> {
+    return this.http.get(environment.api_url+`/movie/${id}/recommendations?api_key=${this._token}&language=pt-br&page=1`, {headers: this.headers}).pipe(
+      map(res =>{
+        return res
+      }),catchError((error: any) => {
+          throw this.handleError(error);
+        }
+      )
+    )
+  }
+
+  public searchMovie(movie): Observable<any>{
+    const params = {
+      api_key: this._token,
+      query: 'Safety '
+    }
+    const filtro = new URLSearchParams(params).toString();
+    return this.http.get(environment.api_url+`/search/multi`+filtro, {headers: this.headers}).pipe(
       map(res =>{
         return res
       }),catchError((error: any) => {

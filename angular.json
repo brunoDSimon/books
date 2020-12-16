@@ -34,7 +34,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/animate.css/animate.css",
               "src/styles.scss"
             ],
             "scripts": [

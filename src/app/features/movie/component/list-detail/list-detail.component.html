@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-secondary font-weight-bold">
+      <em class="ic-movie mr-2"></em>
+      {{movie?.title}}
+      <span class="ml-2 badge badge-success" [ngClass]="{'badge-info': (movie?.vote_average <= 6), 'badge-danger' : (movie?.vote_average < 5)}">{{movie?.vote_average}}</span>
+    </h4>
+    <div class="row">
+      <div class="col-6 ">
+        <img class="tamanho" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+      </div>
+      <div class="col-6 ">
+        <div class="row text-sm">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12">
+                <span class="text-muted">Lançamento:</span>
+                {{movie?.release_date | date}}
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-2">
+            <div class="row">
+              <div class="col-12 text-muted ">Sobre:</div>
+              <div class="col-12  text-dark">{{movie?.overview}}</div>
+            </div>
+          </div>
+          <div class="col-12 mt-2">
+            <div class="row">
+              <div class="col-12 text-muted text-sm">Produzido por:</div>
+              <div class="col-12 text-sm text-dark" *ngFor="let aux of movie.production_companies">{{aux.name}} {{aux.origin_country}}</div>
+            </div>
+          </div>
+          <div class="col-12 mt-2">
+            <div class="row">
+              <div class="col-12 text-muted text-sm">Genero:</div>
+              <div class="col-12 text-sm text-dark" *ngFor="let aux of movie.genres">{{aux.name}}</div>
+            </div>
+          </div>
+          <div class="col-12 mt-2">
+            <div class="row">
+              <div class="col-12 text-muted text-sm">Receita:</div>
+              <div class="col-12 text-sm text-dark">{{movie?.revenue | reais}}</div>
+            </div>
+          </div>
+          <div class="col-12 mt-2">
+            <div class="row">
+              <div class="col-12 text-muted">Duração</div>
+              <div class="col-12">{{convertHour(movie?.runtime)}}M</div>
+            </div>
+          </div>
+          <div class="col-12 mt-2"  *ngIf="movie?.homepage">
+            <div class="row">
+              <div class="col-12">
+                <a class="btn btn-link" href="{{movie.homepage}}" target="_blank">
+                  Veja mais em.
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
