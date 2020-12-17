@@ -22,7 +22,9 @@ export class SearchDetailComponent implements OnInit {
 
   ngOnInit() {
     if (this.movieData.listHeader.length) {
-      this._listData = this.movieData.listHeader[0].list.results;
+      this._pageMax = this.movieData.listHeader[0].list.total_pages;
+      this._page = this.movieData.listHeader[0].list.page;
+      return this._listData = this.movieData.listHeader[0].list.results.sort((a, b) => {return b.vote_average - a.vote_average });
     } else {
       this.router.navigate([`/movie`])
     }
@@ -37,7 +39,7 @@ export class SearchDetailComponent implements OnInit {
   }
 
   get listData() {
-    return this._listData =  this.movieData.listHeader[0].list.results;
+    return this._listData =  this.movieData.listHeader[0].list.results.sort((a, b) => {return b.vote_average - a.vote_average });
   }
 
   public search(value, page){
@@ -46,6 +48,7 @@ export class SearchDetailComponent implements OnInit {
     this.movieData.clearList();
     this.movieService.searchMovie(value, this._page).subscribe((res) =>{
       this._listData = res.results;
+      this._pageMax = res.total_pages;
       this.movieData.setListHeader(res, value);
       setTimeout(() => {this.spinner.hide();}, 500);
     },(error : Error) =>{
@@ -56,14 +59,16 @@ export class SearchDetailComponent implements OnInit {
 
 
   public next() {
-    this._page = this._page + 1;
-    console.log(this._page);
-    this.search(this.movieData.listHeader[0].value, this._page)
+    if (this._page < this._pageMax) {
+      this._page = this._page + 1;
+      console.log(this._page);
+      this.search(this.movieData.listHeader[0].value, this._page)
+    }
   }
 
   public prev() {
     if (this._page >1) {
-      this._page = this._page + 1;
+      this._page = this._page - 1;
       this.search(this.movieData.listHeader[0].value, this._page)
     }
   }

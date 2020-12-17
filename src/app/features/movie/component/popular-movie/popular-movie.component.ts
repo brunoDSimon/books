@@ -47,7 +47,7 @@ export class PopularMovieComponent implements OnInit {
 
   public prev() {
     if (this._page >1) {
-      this._page = this._page + 1;
+      this._page = this._page - 1;
       this.getMovies(this._page);
     }
   }

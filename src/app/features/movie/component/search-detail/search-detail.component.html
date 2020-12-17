@@ -3,13 +3,13 @@
     <div class="col-12">
       <nav aria-label="..." class="float-right">
         <ul class="pagination">
-          <li class="page-item " [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          <li class="page-item " (click)="prev()" [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
+            <a class="page-link" tabindex="-1">Previous</a>
           </li>
           <li class="page-item active" >
-            <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+            <a class="page-link" >{{page}} <span class="sr-only">(current)</span></a>
           </li>
-          <li class="page-item" (click)="next()"  [attr.disabled]="pageMax >= page ? false : true" [ngClass]="{'disabled': pageMax >= page ? false : true}">
+          <li class="page-item" (click)="next()"  [attr.disabled]=" page < pageMax ? false : true" [ngClass]="{'disabled':  page < pageMax ? false : true}">
             <a class="page-link" >Next</a>
           </li>
         </ul>
@@ -17,17 +17,18 @@
     </div>
     <div class="col-12">
       <app-list-movies [dados]="listData"></app-list-movies>
+      <app-messenger-dados *ngIf="!listData.length"></app-messenger-dados>
     </div>
     <div class="col-12">
       <nav aria-label="..." class="float-right">
         <ul class="pagination">
-          <li class="page-item " [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          <li class="page-item " (click)="prev()" [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
+            <a class="page-link"  tabindex="-1">Previous</a>
           </li>
           <li class="page-item active" >
-            <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+            <a class="page-link">{{page}} <span class="sr-only">(current)</span></a>
           </li>
-          <li class="page-item" (click)="next()"  [attr.disabled]="pageMax >= page ? false : true" [ngClass]="{'disabled': pageMax >= page ? false : true}">
+          <li class="page-item" (click)="next()"  [attr.disabled]=" page < pageMax ? false : true" [ngClass]="{'disabled': page < pageMax ? false : true}">
             <a class="page-link" >Next</a>
           </li>
         </ul>
