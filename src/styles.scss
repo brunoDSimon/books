@@ -44,7 +44,7 @@
 @import "theme/form";
 body{
     width: 100%;
-    padding-top: 120px;
+    padding-top: 140px;
     background-color: $bg-cinza;
     font-family: Calibri, KievitOT;
 
@@ -74,10 +74,10 @@ body{
 .btn-fixed {
   z-index: 4;
   position: fixed;
-  right: 15px;
+  right: 200px;
   bottom: 0;
-  height: 80px;
-  width: 80px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background-color: $Roxo;
 
