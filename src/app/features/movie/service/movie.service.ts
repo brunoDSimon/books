@@ -19,10 +19,12 @@ constructor(
 }
   public getMovies(page): Observable<any>{
     const params = {
+      api_key: this._token,
+      language: 'pt-br',
       page: page
     }
     const filtro = new URLSearchParams(params).toString();
-    return this.http.get(environment.api_url+`/movie/popular?api_key=${this._token}&language=pt-br&`+filtro, {headers: this.headers}).pipe(
+    return this.http.get(environment.api_url+`/movie/popular?`+filtro, {headers: this.headers}).pipe(
       map(res =>{
         return res
       }),catchError((error: any) => {

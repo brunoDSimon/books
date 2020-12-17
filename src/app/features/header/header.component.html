@@ -9,12 +9,12 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a [routerLink]="['/movies']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+          <a [routerLink]="['/movie']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
             Tedencias
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/financeiro/adicionar-empresa']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
+          <a [routerLink]="['/movie/popular']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
             Popular
           </a>
         </li>
@@ -24,7 +24,7 @@
           <em class="ic-search"></em>
         </button>
         <div class="input-group input-bar-slide pt-2"  [hidden]="!open">
-          <input #search  type="text" class="form-control border-left-0 border-top-0 border-right-0 search-input" [(ngModel)]="model" [ngbTypeahead]="searchTeste" [resultFormatter]="formatter" />
+          <input #search  type="text" class="form-control border-left-0 border-top-0 border-right-0 search-input" [ngbTypeahead]="searchTeste" [resultFormatter]="formatter" />
           <!-- <input
           #search
           type="search"
