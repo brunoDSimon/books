@@ -49,6 +49,7 @@ export class SearchDetailComponent implements OnInit {
     this.movieService.searchMovie(value, this._page).subscribe((res) =>{
       this._listData = res.results;
       this._pageMax = res.total_pages;
+      this._page    = res.page;
       this.movieData.setListHeader(res, value);
       setTimeout(() => {this.spinner.hide();}, 500);
     },(error : Error) =>{
