@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-12  align-items-stretch">
-    <div class="card" *ngIf="!movie != null" id="home">
+  <div class="col-12  align-items-stretch"  >
+    <div class="card" *ngIf="!movie != null">
       <div class="card-body">
         <h4 class="card-title text-secondary font-weight-bold">
           <em class="ic-movie mr-2"></em>
@@ -67,5 +67,10 @@
       </div>
     </div>
     <app-messenger-dados *ngIf="movie == null "></app-messenger-dados>
+    <div class="btn-fixed border" *ngIf="showButon">
+      <a  (click)="scrolToElement()">
+        <em class="ic-arrow-up text-center"></em>
+      </a>
+    </div>
   </div>
 </div>
