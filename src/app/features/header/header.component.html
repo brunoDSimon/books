@@ -15,33 +15,23 @@
         </li>
         <li class="nav-item">
           <a [routerLink]="['/movie/popular']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
-            Popular
+           Popular
           </a>
         </li>
       </ul>
-      <form  >
-        <button class="btn btn-primary float-right " (click)="abri()" [hidden]="open">
-          <em class="ic-search"></em>
-        </button>
-        <div class="input-group input-bar-slide pt-2"  [hidden]="!open">
-          <input #search  type="text" class="form-control border-left-0 border-top-0 border-right-0 search-input" [ngbTypeahead]="searchTeste" [resultFormatter]="formatter" />
-          <!-- <input
-          #search
-          type="search"
-          class="form-control border-left-0 border-top-0 border-right-0 search-input"
-          autofocus
-          formControlName="search"
-          (blur)="search()"
-          > -->
-          <span class="input-group-append" (click)="hideSearch()">
-            <div class="input-group-text bg-transparent border-left-0 border-top-0 border-right-0 text-primary px-0">
-              <em class="ic-close mt-4"></em>
-            </div>
-            <span class="bar"></span>
-          </span>
-        </div >
-
-      </form>
+      <app-messenger-error [msg]="msgError" [type]="typeError"></app-messenger-error>
+      <button class="btn btn-primary float-right " (click)="abri()" [hidden]="open">
+        <em class="ic-search"></em>
+      </button>
+      <div class="input-group input-bar-slide pt-2"  [hidden]="!open">
+        <input #search  type="text" class="form-control border-left-0 border-top-0 border-right-0 search-input" [ngbTypeahead]="searchTeste" [resultFormatter]="formatter" />
+        <span class="input-group-append" (click)="hideSearch()">
+          <div class="input-group-text bg-transparent border-left-0 border-top-0 border-right-0 text-primary px-0">
+            <em class="ic-close mt-4"></em>
+          </div>
+          <span class="bar"></span>
+        </span>
+      </div >
     </div>
   </div>
 </nav>

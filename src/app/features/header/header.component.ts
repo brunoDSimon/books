@@ -16,8 +16,9 @@ export class HeaderComponent implements OnInit {
   @ViewChild('search') searchField: ElementRef;
   private _open:boolean = false;
   private _logado:boolean = false;
+  private _msgError: any;
+  private _typeError: any
   public formGroup: FormGroup
-  public model: any;
 
   constructor(
     private router: Router,
@@ -28,12 +29,23 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+
   get logado(){
     return this._logado
   }
+
   get open(){
     return this._open
   }
+
+  get msgError() {
+    return this._msgError;
+  }
+
+  get typeError() {
+    return this._typeError;
+  }
+
   public abri(){
     this._open = true;
     const search = this.searchField;
@@ -60,11 +72,21 @@ export class HeaderComponent implements OnInit {
   public search(value){
     this.movieData.clearList();
     this.movieService.searchMovie(value,1).subscribe((res) =>{
-      this.movieData.setListHeader(res, value);
-      this.router.navigate([`/movie/search`])
+      if (res.results.length) {
+        this.movieData.setListHeader(res, value);
+        this.router.navigate([`/movie/search`])
+        console.log('entrou ')
+      } else {
+        alert('Não há dados')
+        this._msgError = 'Não há dados';
+        this._typeError = 'info';
+        console.log('saiu ')
+      }
     },(error : Error) =>{
-      console.log(error)
+      this._msgError = 'Não há dados';
+      this._typeError = 'danger';
     })
   }
+  value = null;
 
 }

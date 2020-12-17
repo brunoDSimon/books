@@ -36,12 +36,14 @@ export class SearchDetailComponent implements OnInit {
   }
 
   get listData() {
-    return this._listData;
+    return this._listData =  this.movieData.listHeader[0].list.results;
   }
 
   public search(value, page){
+    this._listData = [];
     this.movieData.clearList();
     this.movieService.searchMovie(value, this._page).subscribe((res) =>{
+      this._listData = res.results;
       this.movieData.setListHeader(res, value);
     },(error : Error) =>{
       console.log(error)
