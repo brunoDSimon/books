@@ -34,22 +34,20 @@
           </a>
         </li>
       </ul>
-      <!-- <label >
-        <input type="text" placeholder="new-channel" spellcheck="false">
-      </label> -->
-      <div>
+      <form  >
         <button class="btn btn-primary float-right " (click)="abri()" [hidden]="open">
           <em class="ic-search"></em>
         </button>
         <div class="input-group input-bar-slide pt-2"  [hidden]="!open">
-          <input
+          <input #search  type="text" class="form-control border-left-0 border-top-0 border-right-0 search-input" [(ngModel)]="model" [ngbTypeahead]="searchTeste" [resultFormatter]="formatter" />
+          <!-- <input
           #search
           type="search"
           class="form-control border-left-0 border-top-0 border-right-0 search-input"
-          name=""
-          id=""
           autofocus
-          >
+          formControlName="search"
+          (blur)="search()"
+          > -->
           <span class="input-group-append" (click)="hideSearch()">
             <div class="input-group-text bg-transparent border-left-0 border-top-0 border-right-0 text-primary px-0">
               <em class="ic-close mt-4"></em>
@@ -58,7 +56,7 @@
           </span>
         </div >
 
-      </div>
+      </form>
     </div>
   </div>
 </nav>

@@ -72,10 +72,10 @@ constructor(
   public searchMovie(movie): Observable<any>{
     const params = {
       api_key: this._token,
-      query: 'Safety '
+      query: movie
     }
     const filtro = new URLSearchParams(params).toString();
-    return this.http.get(environment.api_url+`/search/multi`+filtro, {headers: this.headers}).pipe(
+    return this.http.get(environment.api_url+`/search/multi?`+filtro, {headers: this.headers}).pipe(
       map(res =>{
         return res
       }),catchError((error: any) => {
