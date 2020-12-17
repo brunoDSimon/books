@@ -34,10 +34,12 @@ constructor(
 
   public getTrending(page, type, date): Observable<any>{
     const params = {
+      api_key: this._token,
+      language: 'pt-br',
       page: page
     }
     const filtro = new URLSearchParams(params).toString();
-    return this.http.get(environment.api_url+`/trending/${type}/${date}?api_key=${this._token}&`+ filtro ,{headers: this.headers}).pipe(
+    return this.http.get(environment.api_url+`/trending/${type}/${date}?`+ filtro ,{headers: this.headers}).pipe(
       map(res =>{
         return res
       }),catchError((error: any) => {
@@ -59,7 +61,13 @@ constructor(
   }
 
   public getRecommendation(id):Observable<any> {
-    return this.http.get(environment.api_url+`/movie/${id}/recommendations?api_key=${this._token}&language=pt-br&page=1`, {headers: this.headers}).pipe(
+    const params = {
+      api_key: this._token,
+      language: 'pt-br',
+      page: '1'
+    }
+    const filtro = new URLSearchParams(params).toString();
+    return this.http.get(environment.api_url+`/movie/${id}/recommendations?`+filtro, {headers: this.headers}).pipe(
       map(res =>{
         return res
       }),catchError((error: any) => {
@@ -69,10 +77,12 @@ constructor(
     )
   }
 
-  public searchMovie(movie): Observable<any>{
+  public searchMovie(movie, page): Observable<any>{
     const params = {
       api_key: this._token,
-      query: movie
+      language: 'pt-br',
+      query: movie,
+      page: page
     }
     const filtro = new URLSearchParams(params).toString();
     return this.http.get(environment.api_url+`/search/multi?`+filtro, {headers: this.headers}).pipe(

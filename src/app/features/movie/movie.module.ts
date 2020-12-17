@@ -19,6 +19,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MovieRoutingModule } from './movie-routing.module';
+import { SearchDetailComponent } from './component/search-detail/search-detail.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { MovieRoutingModule } from './movie-routing.module';
     MovieComponent,
     ListMoviesComponent,
     DetailComponent,
-    ListDetailComponent
+    ListDetailComponent,
+    SearchDetailComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

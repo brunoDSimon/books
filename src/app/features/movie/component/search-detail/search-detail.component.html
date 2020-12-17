@@ -1,0 +1,37 @@
+.<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="..." class="float-right">
+        <ul class="pagination">
+          <li class="page-item " [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active" >
+            <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item" (click)="next()"  [attr.disabled]="pageMax >= page ? false : true" [ngClass]="{'disabled': pageMax >= page ? false : true}">
+            <a class="page-link" >Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-12">
+      <app-list-movies [dados]="listData"></app-list-movies>
+    </div>
+    <div class="col-12">
+      <nav aria-label="..." class="float-right">
+        <ul class="pagination">
+          <li class="page-item " [attr.disabled]="page > 1 ? false : true" [ngClass]="{'disabled': page > 1 ? false : true}">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active" >
+            <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item" (click)="next()"  [attr.disabled]="pageMax >= page ? false : true" [ngClass]="{'disabled': pageMax >= page ? false : true}">
+            <a class="page-link" >Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

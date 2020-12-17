@@ -1,3 +1,4 @@
+import { MovieDataService } from './../../shared/service/movieData.service';
 import { Observable } from 'rxjs';
 import { MovieService } from './../movie/service/movie.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -19,11 +20,10 @@ export class HeaderComponent implements OnInit {
   public model: any;
 
   constructor(
-    private userData: UsersDataService,
     private router: Router,
     private movieService: MovieService,
     private formBuilder: FormBuilder,
-
+    private movieData:  MovieDataService
   ) {}
 
   ngOnInit() {
@@ -58,11 +58,13 @@ export class HeaderComponent implements OnInit {
 
 
   public search(value){
-    // const value = this.formGroup.get('search').value;
-    this.movieService.searchMovie(value).subscribe((res) =>{
-      console.log(res);
+    this.movieData.clearList();
+    this.movieService.searchMovie(value,1).subscribe((res) =>{
+      this.movieData.setListHeader(res, value);
+      this.router.navigate([`/movie/search`])
     },(error : Error) =>{
       console.log(error)
     })
   }
+
 }
