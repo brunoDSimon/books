@@ -5,16 +5,15 @@
 .remove {
   @media (max-width: 720px) {
     display: none;
-    visibility: hidden
   }
 }
 
 .card{
   height: 950px;
   &.fix {
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
       height: auto !important;
-      width: 500px !important;
+      max-width: 290px;
     }
   }
 }

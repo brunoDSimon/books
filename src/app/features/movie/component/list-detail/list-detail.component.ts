@@ -12,6 +12,7 @@ export class ListDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    scrollTo(0,0)
   }
   public convertHour(hour) {
     const result = hour / 60;

@@ -1,5 +1,5 @@
 <div class="row" >
-  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-2 align-items-stretch" *ngFor="let aux of dados; index as i" id="home">
+  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 mb-2 align-items-stretch" *ngFor="let aux of dados; index as i" id="home">
     <div class="card" *ngIf="dados.length">
         <div class="card-body">
           <h4 class="card-title text-secondary font-weight-bold">
@@ -12,7 +12,8 @@
               <div class="col-6 ">
                 <div class="row">
                   <div class="col-12 tamano">
-                    <img class="fixed-img" height="250px" src="https://image.tmdb.org/t/p/w500{{aux.poster_path}}" alt="">
+                    <img class="fixed-img" height="250px" src="https://image.tmdb.org/t/p/w500{{aux.poster_path}}" alt="{{(aux?.title != null) ? aux?.title: aux.original_name }}" *ngIf="aux.poster_path != null">
+                    <img class="tamanho" style="height: 220px;" src="../../../../../assets/not-found-png.png" alt="{{(aux?.title != null) ? aux?.title: aux.original_name }}" *ngIf="aux.poster_path == null">
                   </div>
                 </div>
               </div>
