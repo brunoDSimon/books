@@ -17,7 +17,6 @@ export class MovieComponent implements OnInit {
     {label:'Todos', value: 'all'},
     {label:'Filme', value: 'movie'},
     {label:'Tv', value: 'tv'},
-    {label:'Personagem', value: 'person'},
   ];
 
   private _timeWindow: any = [

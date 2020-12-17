@@ -70,3 +70,25 @@ body{
   width: 50px;
   border-radius: 15px;
 }
+
+.btn-fixed {
+  z-index: 4;
+  position: fixed;
+  right: 15px;
+  bottom: 0;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: $Roxo;
+
+  @media (max-width: 760px) {
+    bottom: 15px;
+  }
+  a {
+    display: block;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-list-movies',
@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListMoviesComponent implements OnInit {
   @Input() dados: any = [];
-
+  public showButon: boolean = false;
   constructor(
   private route: Router,
   ) { }
@@ -20,4 +20,20 @@ export class ListMoviesComponent implements OnInit {
   public redirect(aux) {
     this.route.navigate([`/movie/detalhe/${aux}`])
   }
+
+  public scrolToElement() {
+    document.querySelector('#home').scrollIntoView({block: 'end',behavior: 'smooth'});
+  }
+
+
+  @HostListener('window:scroll', [])
+ public  isScrollUpDown() {
+    const scrolTop = window.scrollY;
+    if( scrolTop > 280) {
+      this.showButon = true;
+     } else {
+      this.showButon = false;
+     }
+  }
 }
+

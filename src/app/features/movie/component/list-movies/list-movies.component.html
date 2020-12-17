@@ -1,18 +1,18 @@
-<div class="row">
-  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-2 align-items-stretch" *ngFor="let aux of dados; index as i">
-    <div class="card">
+<div class="row" >
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-2 align-items-stretch" *ngFor="let aux of dados; index as i" id="home">
+    <div class="card" *ngIf="dados.length">
         <div class="card-body">
           <h4 class="card-title text-secondary font-weight-bold">
-            <em class="ic-movie mr-2"></em>
-            {{aux?.title}}
+            <em class="ic-movie mr-1"></em>
+            {{(aux?.title != null) ? aux?.title: aux?.original_name }}
             <span class="ml-2 badge badge-success" [ngClass]="{'badge-info': (aux?.vote_average <= 6), 'badge-danger' : (aux?.vote_average < 5)}">{{aux?.vote_average}}</span>
-            <button class="btn btn-outline-primary btn-sm float-right" (click)="redirect(aux?.id)" *ngIf="aux?.id">Ver mais</button>
+            <button class="btn btn-outline-primary btn-sm float-right position-relative" (click)="redirect(aux?.id)" *ngIf="aux?.id">Ver mais</button>
           </h4>
             <div class="row">
               <div class="col-6 ">
                 <div class="row">
                   <div class="col-12 tamano">
-                    <img height="300px" src="https://image.tmdb.org/t/p/w500{{aux.poster_path}}" alt="">
+                    <img class="fixed-img" height="250px" src="https://image.tmdb.org/t/p/w500{{aux.poster_path}}" alt="">
                   </div>
                 </div>
               </div>
@@ -36,6 +36,12 @@
               </div>
             </div>
         </div>
+    </div>
+    <app-messenger-dados *ngIf="!dados.length"></app-messenger-dados>
+    <div class="btn-fixed border" *ngIf="showButon">
+      <a  (click)="scrolToElement()">
+        <em class="ic-arrow-up text-center"></em>
+      </a>
     </div>
   </div>
 </div>

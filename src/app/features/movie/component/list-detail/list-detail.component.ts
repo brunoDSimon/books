@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-list-detail',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListDetailComponent implements OnInit {
   @Input() movie: any = [];
+  public showButon: boolean = false;
 
   constructor() { }
 
@@ -15,5 +16,19 @@ export class ListDetailComponent implements OnInit {
   public convertHour(hour) {
     const result = hour / 60;
     return result.toFixed(2).replace(".", "H")
+  }
+  public scrolToElement() {
+    document.querySelector('#home').scrollIntoView({block: 'end',behavior: 'smooth'});
+  }
+
+
+  @HostListener('window:scroll', [])
+ public  isScrollUpDown() {
+    const scrolTop = window.scrollY;
+    if( scrolTop > 280) {
+      this.showButon = true;
+     } else {
+      this.showButon = false;
+     }
   }
 }

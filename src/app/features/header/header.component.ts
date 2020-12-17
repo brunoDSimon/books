@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MovieDataService } from './../../shared/service/movieData.service';
 import { Observable } from 'rxjs';
 import { MovieService } from './../movie/service/movie.service';
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private movieService: MovieService,
     private formBuilder: FormBuilder,
-    private movieData:  MovieDataService
+    private movieData:  MovieDataService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
@@ -70,21 +72,25 @@ export class HeaderComponent implements OnInit {
 
 
   public search(value){
+    this.spinner.show();
     this.movieData.clearList();
     this.movieService.searchMovie(value,1).subscribe((res) =>{
       if (res.results.length) {
         this.movieData.setListHeader(res, value);
         this.router.navigate([`/movie/search`])
         console.log('entrou ')
+        setTimeout(() => {this.spinner.hide();}, 500);
       } else {
         alert('Não há dados')
         this._msgError = 'Não há dados';
         this._typeError = 'info';
         console.log('saiu ')
+        setTimeout(() => {this.spinner.hide();}, 500);
       }
     },(error : Error) =>{
       this._msgError = 'Não há dados';
       this._typeError = 'danger';
+      setTimeout(() => {this.spinner.hide();}, 500);
     })
   }
   value = null;

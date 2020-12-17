@@ -6,3 +6,20 @@
   width: 50px;
   border-radius: 15px;
 }
+
+.fixed-img{
+  @media (max-width: 1500px) {
+    height: 45% !important;
+  }
+  @media (max-width: 1201px) {
+    height: 40% !important;
+  }
+  @media (max-width: 500px) {
+    height: 25% !important;
+  }
+}
+
+.card {
+  min-height: 500px;
+  max-height: 950px;
+}

@@ -1,6 +1,6 @@
 import { MovieService } from './../../service/movie.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetailComponent implements OnInit {
   private _movie: any = [];
   private _listRecomendation: any =[];
+  public showButon: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
@@ -63,9 +64,11 @@ export class DetailComponent implements OnInit {
   }
 
   public getRecommendation(id){
+    this.spinner.show();
     this._listRecomendation = [];
     this.movieService.getRecommendation(id).subscribe((res) =>{
-      this.replaceArray(res.results)
+      const filter = res.results.filter(item => item.poster_path != null )
+      this.replaceArray(filter)
       setTimeout(() => {this.spinner.hide();}, 500);
     },(error: Error) =>{
       console.log(error);
@@ -84,5 +87,21 @@ export class DetailComponent implements OnInit {
 
   public redirect(aux) {
     this.routerNavegation.navigate([`/movie/detalhe/${aux}`])
+  }
+
+  public scrolToElement() {
+    console.log('entrou no redirect')
+    document.querySelector('#home').scrollIntoView({block: 'end',behavior: 'smooth'});
+  }
+
+
+  @HostListener('window:scroll', [])
+ public  isScrollUpDown() {
+    const scrolTop = window.scrollY;
+    if( scrolTop > 280) {
+      this.showButon = true;
+     } else {
+      this.showButon = false;
+     }
   }
 }
