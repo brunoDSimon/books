@@ -1,35 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-  <a class="navbar-brand" href="#">
-    <img src="../../../assets/logo.png" alt="" width="70" height="70">
-  </a>
-  <div>
-    <ul class="navbar-nav ">
-      <li class="nav-item mr-auto">
-        <a [routerLink]="['/movie']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
-          Tedencias
-        </a>
-      </li>
-      <li class="nav-item mr-auto">
-        <a [routerLink]="['/movie/popular']" routerLinkActive="router-link-active"  class="nav-link text-dark font-italic">
-          Popular
-        </a>
-      </li>
-      <li class="nav-item mr-auto">
-        <button class="btn btn-primary float-right " (click)="abri()" [hidden]="open">
-          <em class="ic-search"></em>
-        </button>
-        <div class="input-group input-bar-slide pt-2"  [hidden]="!open">
-          <input #search  type="text" class="form-control border-left-0 border-top-0 border-right-0 search-input" [ngbTypeahead]="searchTeste" [resultFormatter]="formatter" />
-          <span class="input-group-append" (click)="hideSearch()">
-            <div class="input-group-text bg-transparent border-left-0 border-top-0 border-right-0 text-primary px-0">
-              <em class="ic-close mt-4"></em>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-12 rectangle">
+        <div class="row">
+          <div class="offset-3 col-6 text-center">
+            <div class="input-group mb-3">
+              <input id="typeahead-format" type="text" class=" form-control"  [ngbTypeahead]="search" [resultFormatter]="formatter" placeholder="teste"/>
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">
+                  <em class="ic-search"></em>
+                </span>
+              </div>
             </div>
-            <span class="bar"></span>
-          </span>
-        </div >
-      </li>
-    </ul>
-    <app-messenger-error [msg]="msgError" [type]="typeError"></app-messenger-error>
-
+          </div>
+        </div>
+      </div>
   </div>
-</nav>
+</div>

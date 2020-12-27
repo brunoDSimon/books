@@ -12,14 +12,12 @@ import { NgxMaskModule} from 'ngx-mask'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './features/header/header.component';
-import { FooterComponent } from './features/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from "ngx-currency";
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
-import { RefrashTokenInterceptor } from './shared/interceptor/RefrashToken.interceptor';
 
 registerLocaleData(localePt)
 
@@ -27,7 +25,6 @@ registerLocaleData(localePt)
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
 
   ],
   imports: [
@@ -50,7 +47,6 @@ registerLocaleData(localePt)
   providers: [
     DateFormatPipe,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: RefrashTokenInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt'}
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
