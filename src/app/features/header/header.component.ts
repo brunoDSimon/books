@@ -5,6 +5,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { EventEmitterService } from 'src/app/shared/service/event-emitter.service';
 
 @Component({
   selector: 'app-header',
@@ -38,6 +39,7 @@ export class HeaderComponent implements OnInit {
   public searchCity(value){
     this.weatherService.sharedCity(value).subscribe((res) =>{
       console.log(res)
+      EventEmitterService.get('dadosTempo').emit(res);
     },(error: Error) =>{
       console.log(error)
     })

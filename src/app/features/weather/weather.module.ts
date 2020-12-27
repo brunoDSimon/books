@@ -13,7 +13,7 @@ import { WeatherComponent } from './component/weather/weather.component';
   ],
   imports: [
     CommonModule,
-    WeatherRoutingModule
+    WeatherRoutingModule,
   ]
 })
 export class WeatherModule { }
