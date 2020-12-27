@@ -1,25 +1,27 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-      <div class="col-12 rectangle">
-        <div class="row">
-          <div class="offset-3 col-6 text-center">
-            <div class="input-group mb-3">
-              <input
-                id="typeahead-format"
-                type="text"
-                class=" form-control"
-                [ngbTypeahead]="search"
-                [resultFormatter]="formatter"
-                placeholder=""
-              />
-              <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2">
-                  <em class="ic-search"></em>
-                </span>
-              </div>
+    <div class="col-12 rectangle ">
+      <div class="row mb-5">
+        <div class="col-12 icon-text ion-android-arrow-back text-left mt-2 cursor-pointer" (click)="back()">
+        </div>
+        <div class="offset-3 col-6 text-center">
+          <div class="input-group mb-3">
+            <input
+              id="typeahead-format"
+              type="text"
+              class=" form-control"
+              [ngbTypeahead]="search"
+              [resultFormatter]="formatter"
+              placeholder=""
+            />
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">
+                <em class="ic-search"></em>
+              </span>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>

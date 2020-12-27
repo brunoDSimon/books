@@ -67,7 +67,7 @@ export class WeatherListDaysComponent implements OnInit {
 
   public formatData(aux) {
     let data = new Date(aux*1000)
-    return this.datePipe.transform(data, 'DD-MMM-YYYY HH:mm:ss')
+    return this.datePipe.transform(data, 'HH:mm:ss');
   }
 
 }

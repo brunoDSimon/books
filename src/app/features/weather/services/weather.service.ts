@@ -18,9 +18,9 @@ constructor(
 
 
  public sharedCity(city): Observable<any>{
-  return this.http.get(environment.api_url+`weather?q=${city}&appid=${environment.api_key}&lang=pt_br&units=metric`).pipe(
+  return this.http.get<any>(environment.api_url+`weather?q=${city}&appid=${environment.api_key}&lang=pt_br&units=metric`).pipe(
     map((res) =>{
-      return res
+      return this.filter(res)
     },catchError((error: any) => {
         throw this.handleError(error);
       })
@@ -30,10 +30,9 @@ constructor(
 
 
   public sharedCityNextDays(idCity): Observable<any>{
-    // api.openweathermap.org/data/2.5/forecast?id=3456068&appid=58ce88c80722b3377ef30064c2e9a183&units=metric
-    return this.http.get(environment.api_url+`forecast?id=${idCity}&appid=${environment.api_key}&lang=pt_br&units=metric`).pipe(
+    return this.http.get<any>(environment.api_url+`forecast?id=${idCity}&appid=${environment.api_key}&lang=pt_br&units=metric`).pipe(
       map((res) =>{
-        return res
+        return this.filter(res)
       },catchError((error: any) => {
           throw this.handleError(error);
         })

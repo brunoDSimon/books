@@ -8,24 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit, OnDestroy {
-  private _dados: any = []
+  private _dados: any = [];
+  private _error: string = '';
+  private _typeError: string = '';
   private sub: any;
 
   constructor(
     private router: Router
   ) {
-    EventEmitterService.get('dadosTempo').subscribe(data => this._dados.push(data));
+    this.emitDados();
   }
 
   ngOnInit() {
   }
 
+  get error() {
+    return this._error;
+  }
+
   get dados() {
     return this._dados;
   }
-  ngOnDestroy() {
-    EventEmitterService.get('dadosTempo').unsubscribe();
-}
+
+  get typeError() {
+    return this._typeError;
+  }
 
   public urlContry(i) {
     const lowcase = i.toLowerCase()
@@ -40,4 +47,27 @@ export class WeatherComponent implements OnInit, OnDestroy {
   public nextDays(i) {
     this.router.navigate([`/home/days/${i}`]);
   }
+
+  public emitDados(){
+    EventEmitterService.get('dadosTempo').subscribe((data) => {
+      this.closeAll();
+      this._dados.push(data)
+    });
+    EventEmitterService.get('error').subscribe((data) => {
+      this.closeAll();
+      this._error = data;
+      this._typeError = 'danger';
+    });
+  }
+
+  public closeAll() {
+    this._dados = [];
+    this._typeError = '';
+    this._error     = '';
+  }
+  ngOnDestroy() {
+    this._dados = [];
+    EventEmitterService.get('dadosTempo').unsubscribe();
+  }
+
 }

@@ -3,7 +3,6 @@ import { HttpHeaders } from '@angular/common/http';
 import {Messege} from '../models/messege';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Response } from '../models/response';
-import { DefaultResponse } from '../models/default-response.mode';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,13 +16,14 @@ export class Service {
   get headers() {
     return this._headers;
   }
-  filter(response: DefaultResponse, calllback?: any) {
-    if ((response.success && response.status_code == '1') || (response.success )) {
-      return response.results;
-    } else if (response.status_message ) {
-      throw new Error(response.status_message);
+  filter(response: Response, calllback?: any) {
+    console.log(response);
+    if (response.cod  == '200') {
+      return response;
+    } else if (response.cod == '404' ) {
+      throw new Error(response.message);
     } else {
-      throw new Error(Messege.erro_inesperado);
+      throw new Error(response.message);
     }
   }
   handleError(err: any) {
