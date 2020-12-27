@@ -66,8 +66,14 @@ export class WeatherComponent implements OnInit, OnDestroy {
     this._error     = '';
   }
   ngOnDestroy() {
-    this._dados = [];
-    EventEmitterService.get('dadosTempo').unsubscribe();
+    this.closeAll();
+    this.router.navigate([], {
+      queryParams: {
+        paramName: null,
+        paramName2: null,
+      },
+      queryParamsHandling: 'merge'
+    })
   }
 
 }

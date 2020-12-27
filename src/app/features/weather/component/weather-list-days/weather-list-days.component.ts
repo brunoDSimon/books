@@ -1,7 +1,7 @@
 import { EventEmitterService } from './../../../../shared/service/event-emitter.service';
 import { WeatherService } from './../../services/weather.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -9,13 +9,15 @@ import { DatePipe } from '@angular/common';
   templateUrl: './weather-list-days.component.html',
   styleUrls: ['./weather-list-days.component.scss']
 })
-export class WeatherListDaysComponent implements OnInit {
+export class WeatherListDaysComponent implements OnInit, OnDestroy {
   private _listDays: any = [];
   private _city: any = [];
   constructor(
     private weatherService: WeatherService,
     private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private router: Router,
+
   ) {
    }
 
@@ -33,14 +35,10 @@ export class WeatherListDaysComponent implements OnInit {
 
   public init(){
     this.route.params.subscribe( parametros => {
-      if (parametros['id']) {
-        console.log(parametros.id)
-        console.log()
-        if(typeof parametros.id != 'undefined'){
-          this.sharedNextDays(parametros.id)
-        }else{
-          console.log('informado nao foi incontrado')
-        }
+      if(typeof parametros.id != 'undefined'){
+        this.sharedNextDays(parametros.id)
+      }else{
+        this.router.navigate([`/home`])
       }
     });
   }
@@ -66,8 +64,19 @@ export class WeatherListDaysComponent implements OnInit {
   }
 
   public formatData(aux) {
-    let data = new Date(aux*1000)
-    return this.datePipe.transform(data, 'HH:mm:ss');
+    let date = new Date(aux*1000);
+    const string = `${date.getHours()}:${date.getMinutes()}:${date.getMilliseconds()}`
+    return string
+  }
+
+  ngOnDestroy() {
+    this.router.navigate([], {
+      queryParams: {
+        paramName: null,
+        paramName2: null,
+      },
+      queryParamsHandling: 'merge'
+    })
   }
 
 }
