@@ -18,7 +18,7 @@ constructor(
 
 
  public sharedCity(city): Observable<any>{
-  return this.http.get(environment.api_url+`weather?q=${city}&appid=${environment.api_key}`).pipe(
+  return this.http.get(environment.api_url+`weather?q=${city}&appid=${environment.api_key}&units=metric`).pipe(
     map((res) =>{
       return res
     },catchError((error: any) => {

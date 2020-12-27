@@ -13,12 +13,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('search') searchField: ElementRef;
-  private _open:boolean = false;
-  private _logado:boolean = false;
-  private _msgError: any;
-  private _typeError: any
   public formGroup: FormGroup
-
+  public list: any = [];
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -29,39 +25,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  get logado(){
-    return this._logado
-  }
-
-  get open(){
-    return this._open
-  }
-
-  get msgError() {
-    return this._msgError;
-  }
-
-  get typeError() {
-    return this._typeError;
-  }
-
-  public abri(){
-    this._open = true;
-    const search = this.searchField;
-    setTimeout(() => {
-      search.nativeElement.focus()
-    }, 350);
-  }
-
-  public hideSearch() {
-    this._open = false;
-    this.searchField.nativeElement.value = '';
-    this.formGroup.reset();
-  }
   public formatter = (result: string) => result.toUpperCase();
 
   public search = (text$: Observable<string>) =>text$.pipe(
-    debounceTime(200),
+    debounceTime(500),
     distinctUntilChanged(),
     map(term => term === '' ? []
       : this.searchCity(term)))
