@@ -5,7 +5,7 @@ import { WeatherComponent } from './component/weather/weather.component';
 
 const routes: Routes = [
   {path: '', component: WeatherComponent},
-  {path: 'days', component: WeatherListDaysComponent}
+  {path: 'days/:id', component: WeatherListDaysComponent}
 
 ];
 

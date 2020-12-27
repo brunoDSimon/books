@@ -1,7 +1,7 @@
 <div class="container-fluid header" *ngIf="dados.length">
     <div class="row">
         <div class="offset-4 col-4">
-          <div class="card" *ngFor="let aux of dados; index as i">
+          <div class="card" *ngFor="let aux of dados; index as i" (click)="nextDays(aux.id)">
             <div class="card-body">
               <div class="row">
 

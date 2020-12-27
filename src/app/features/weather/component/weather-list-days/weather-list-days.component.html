@@ -1,3 +1,103 @@
-<p>
-  weather-list-days works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 h-100">
+      <div class="row">
+        <div class="col-12 title-city mb-3">
+          {{city?.name}}
+        </div>
+        <div class="offset-3 col-6">
+          <div class="row">
+            <div class="col-4  ">
+              <div class="card">
+                <div class="card-body py-0">
+                  <div class="row">
+                    <div class="col-12 text-temp bg-light " style="height: 90px;">
+                      <div class="row">
+                        <div class="col-12 align-self-center">
+                          {{listDays[0]?.main?.temp}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 align-self-center">
+                      <div class="row">
+                        <div class="col-12 text-center">
+                          <div>
+                            <img src="{{urlTemp(listDays[0]?.weather[0]?.icon)}}" alt="">
+                          </div>
+                          <div class="text-temp-icon">
+                            {{listDays[0]?.weather[0]?.description }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+
+                    <div class="col-12 mx">
+                      Máx
+                      <span>
+                        {{listDays[0]?.main?.temp_max}}
+                      </span>
+                    </div>
+
+                    <div class="col-12 mn">
+                      Min
+                      <span>
+                        {{listDays[0]?.main?.temp_min}}
+                      </span>
+                    </div>
+
+                    <div class="col-12 mn">
+                      Sunrise
+                      <span >
+                        {{formatData(city.sunrise) | date:"HH:mm"}}
+                      </span>
+                    </div>
+
+                    <div class="col-12 mn">
+                      Sunset
+                      <span >
+                        {{formatData(city.sunset) | date:"HH:mm" }}
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-6">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="offset-3 col-6">
+          <div class="card mb-2" *ngFor="let aux of listDays; index as i">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4 align-self-center">
+                  <div class="row">
+                    <div class="col-12 data">
+                      {{aux?.dt_txt | date}}
+                    </div>
+                    <div class="col-12 hora">
+                      {{aux?.dt_txt | date:'HH:mm'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

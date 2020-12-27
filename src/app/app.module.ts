@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './features/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from "ngx-currency";
-import { registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
@@ -46,6 +46,7 @@ registerLocaleData(localePt)
   ],
   providers: [
     DateFormatPipe,
+    DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt'}
   ],

@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
 
   public searchCity(value){
     this.weatherService.sharedCity(value).subscribe((res) =>{
-      console.log(res)
       EventEmitterService.get('dadosTempo').emit(res);
     },(error: Error) =>{
       console.log(error)
