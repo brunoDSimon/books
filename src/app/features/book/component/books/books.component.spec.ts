@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { WeatherComponent } from './weather.component';
+import { WeatherComponent } from './books.component';
 
 describe('WeatherComponent', () => {
   let component: WeatherComponent;

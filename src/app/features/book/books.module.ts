@@ -5,20 +5,20 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { WeatherRoutingModule } from './weather-routing.module';
+import {BooksRoutingModule } from './books-routing.module';
 import { WeatherListDaysComponent } from './component/weather-list-days/weather-list-days.component';
-import { WeatherComponent } from './component/weather/weather.component';
+import { BooksComponent } from './component/books/books.component';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 
 
 @NgModule({
   declarations: [
     WeatherListDaysComponent,
-    WeatherComponent
+    BooksComponent
   ],
   imports: [
     CommonModule,
-    WeatherRoutingModule,
+    BooksRoutingModule,
     PipeModule,
     HttpClientModule,
     SharedModule,
@@ -27,4 +27,4 @@ import { SharedModule } from 'src/app/shared/modules/shared.module';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class WeatherModule { }
+export class BooksModule { }

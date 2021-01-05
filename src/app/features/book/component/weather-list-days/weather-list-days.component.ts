@@ -1,5 +1,5 @@
 import { EventEmitterService } from './../../../../shared/service/event-emitter.service';
-import { WeatherService } from './../../services/weather.service';
+import { BooksService } from '../../services/books.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -13,7 +13,7 @@ export class WeatherListDaysComponent implements OnInit, OnDestroy {
   private _listDays: any = [];
   private _city: any = [];
   constructor(
-    private weatherService: WeatherService,
+    private booksService: BooksService,
     private route: ActivatedRoute,
     private datePipe: DatePipe,
     private router: Router,
@@ -36,7 +36,7 @@ export class WeatherListDaysComponent implements OnInit, OnDestroy {
   public init(){
     this.route.params.subscribe( parametros => {
       if(typeof parametros.id != 'undefined'){
-        this.sharedNextDays(parametros.id)
+        // this.sharedNextDays(parametros.id)
       }else{
         this.router.navigate([`/home`])
       }
@@ -44,14 +44,14 @@ export class WeatherListDaysComponent implements OnInit, OnDestroy {
   }
 
 
-  public sharedNextDays(i){
-    this.weatherService.sharedCityNextDays(i).subscribe((res) =>{
-      this._listDays = res.list;
-      this._city     = res.city;
-    },(error: Error) =>{
-      console.log(error);
-    })
-  }
+  // public sharedNextDays(i){
+  //   this.booksService.sharedCityNextDays(i).subscribe((res) =>{
+  //     this._listDays = res.list;
+  //     this._city     = res.city;
+  //   },(error: Error) =>{
+  //     console.log(error);
+  //   })
+  // }
 
 
   public urlContry(i) {

@@ -120,3 +120,10 @@
   text-align: center;
   color: #3c3c3c;
 }
+
+.col-name {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -49,13 +49,18 @@
         height: 100%;
         background-size: 30px;
     }
-    &-update{
-      background-image: url('/assets/bootstrap-icons-1.2.0/pencil.svg');
+    &-heart{
+      // C:\workspace\frontend\booksRest\src\assets\bootstrap-icons-1.2.0\heart-fill.svg
+      // C:\workspace\frontend\booksRest\src\assets\bootstrap-icons-1.2.0\heart.svg
+      background-image: url('/assets/bootstrap-icons-1.2.0/heart.svg');
       background-position: center;
       background-repeat: no-repeat;
       padding: 8px;
       cursor: pointer;
       display: inline;
+      &.fill{
+        background-image: url('/assets/bootstrap-icons-1.2.0/heart-fill.svg');
+      }
   }
   &-trash{
     background-image: url('/assets/excluir.svg');

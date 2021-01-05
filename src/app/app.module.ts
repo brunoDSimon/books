@@ -18,6 +18,7 @@ import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 registerLocaleData(localePt)
 
@@ -41,14 +42,26 @@ registerLocaleData(localePt)
     MomentModule,
     WebStorageModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
-
+    // SocialLoginModule
   ],
   providers: [
     DateFormatPipe,
     DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: LOCALE_ID, useValue: 'pt'}
+    // {
+    //   provide: 'SocialAuthServiceConfig',
+    //   useValue: {
+    //     autoLogin: false,
+    //     providers: [
+    //       {
+    //         id: GoogleLoginProvider.PROVIDER_ID,
+    //         provider: new GoogleLoginProvider(
+    //           '1007319950820-n846p21em6fndeq4ablm9lrbdl8dhgct.apps.googleusercontent.com'
+    //         )
+    //       }
+    //     ]
+    //   } as SocialAuthServiceConfig,
+    // }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -11,8 +11,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const requestUrl: Array<any> = request.url.split('/');
-    const apiUrl: Array<any> = environment.api_url.split('/');
-    const token = environment.api_key;
+    const apiUrl: Array<any> = environment.api_url2.split('/');
+    const token = '';
     console.log(token)
     if (token && (requestUrl[2] === apiUrl[2])) {
       const newRequest = request.clone({ setHeaders: {'Authorization': `Bearer ${token}`} });

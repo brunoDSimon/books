@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./features/weather/weather.module').then(m => m.WeatherModule),
+    loadChildren: () => import('./features/book/books.module').then(m => m.BooksModule),
   },
   {
     path: '',
