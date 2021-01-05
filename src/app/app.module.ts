@@ -19,6 +19,7 @@ import localePt from '@angular/common/locales/pt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { LoaderComponent } from './shared/componets/loader/loader.component';
 
 registerLocaleData(localePt)
 
@@ -26,7 +27,7 @@ registerLocaleData(localePt)
   declarations: [
     AppComponent,
     HeaderComponent,
-
+    LoaderComponent
   ],
   imports: [
     FormsModule,

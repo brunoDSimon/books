@@ -7,6 +7,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { EventEmitterService } from 'src/app/shared/service/event-emitter.service';
 import { BooksService } from '../book/services/books.service';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
 
 @Component({
   selector: 'app-header',
@@ -22,9 +23,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private _term;
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder,
-    private spinner: NgxSpinnerService,
     private booksService: BooksService,
+    private dataBooks: DataBooksService
   ) {
     EventEmitterService.get('nextPage').subscribe(() =>{
       this._startIndex = this._startIndex + 40;
@@ -37,12 +37,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.getFavorires();
-    this.booksService.auth().subscribe((res) =>{
-      console.log(res)
-    },(error) =>{
-      console.log(error)
-    })
+    // this.getFavorires();
+    // this.booksService.auth().subscribe((res) =>{
+    //   console.log(res)
+    // },(error) =>{
+    //   console.log(error)
+    // })
   }
 
   public formatter = (result: string) => result.toUpperCase();
@@ -56,15 +56,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   public searchBook(value){
+    EventEmitterService.get('showLoader').emit();
     this.router.navigate([`/home`])
     this.booksService.sharedBook(value, this._startIndex).subscribe((res) =>{
       this._term = value
-      EventEmitterService.get('dadosTempo').emit(res);
+      EventEmitterService.get('hideLoader').emit();
+      EventEmitterService.get('dadosBook').emit(res.items);
     },(error) =>{
       this.router.navigate([`/home`])
+      EventEmitterService.get('hideLoader').emit();
       EventEmitterService.get('error').emit();
       console.log()
     })
+  }
+
+  public viewFavorites() {
+    this.router.navigate([`/home`])
+    setTimeout(() => {
+      EventEmitterService.get('dadosBook').emit(this.dataBooks.listBooksFavorites);
+    }, 1000);
   }
 
   public back() {
@@ -93,7 +103,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    EventEmitterService.get('dadosTempo').unsubscribe();
+    EventEmitterService.get('dadosBook').unsubscribe();
     EventEmitterService.get('error').unsubscribe();
     this.router.navigate([], {
       queryParams: {

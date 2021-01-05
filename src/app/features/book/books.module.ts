@@ -6,15 +6,15 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {BooksRoutingModule } from './books-routing.module';
-import { WeatherListDaysComponent } from './component/weather-list-days/weather-list-days.component';
 import { BooksComponent } from './component/books/books.component';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
+import { DetailBookComponent } from './component/detail-book/detail-book.component';
 
 
 @NgModule({
   declarations: [
-    WeatherListDaysComponent,
-    BooksComponent
+    BooksComponent,
+    DetailBookComponent
   ],
   imports: [
     CommonModule,

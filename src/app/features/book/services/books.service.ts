@@ -36,7 +36,17 @@ constructor(
     )
   }
 
-
+  public getBooksById(id){
+    // https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key=yourAPIKey
+      //                                           volumes/zyTCAlFPjgYC?projection=lite&key=yourAPIKey
+    return this.http.get<any>(environment.api_url2+`volumes/${id}?projection=full&key=${environment.api_key2}` ).pipe(
+      map((res) =>{
+        return res
+      },catchError((error: any) => {
+          throw this.handleError(error);
+        })
+      ))
+  }
 
   public viewBooksFavorites() {
     // https://www.googleapis.com/books/v1/mylibrary/bookshelves/7/volumes?key=yourAPIKey

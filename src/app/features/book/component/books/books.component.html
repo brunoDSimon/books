@@ -1,19 +1,26 @@
-<div class="container container-centralized header" #container *ngIf="listaBooks.length">
+<div class="container container-centralized header" #container *ngIf="listaBooks.length" id="home">
   <div class="row">
-    <div class="offset-xl-4 col-xl-4 col-lg-4 offset-lg-4 col-md-12 col-sm-12 col-12" #home>
+    <div class="offset-xl-4 col-xl-4 col-lg-4 offset-lg-4 col-md-12 col-sm-12 col-12" >
       <div class="card mb-2" *ngFor="let aux of listaBooks; index as i">
         <div class="card-body">
           <h5 class="card-title text-secondary font-weight-bold clearfix col-name" title="{{aux?.volumeInfo?.title}}">
             {{aux?.volumeInfo?.title}}
             <span class="ml-2 badge badge-success" [ngClass]="{'badge-info': (aux?.volumeInfo?.averageRating <= 6), 'badge-danger' : (aux?.volumeInfo?.averageRating < 5)}">{{aux?.volumeInfo?.averageRating}}</span>
-            <!-- <span class="float-right" (click)="setBooksFavorires(aux)" title="click para favoritar ">
-              <em class="" [ngClass]="[filterFill(aux)]" alt="Favorito"></em>
-            </span> -->
             <span class="float-right" (click)="setBooksFavorires(aux)" title="click para favoritar ">
               <em class="" [ngClass]="[filterFill(aux)]" alt="Favorito"></em>
             </span>
           </h5>
-          <p class="card-text">{{aux?.volumeInfo?.description}}</p>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <p class="card-text">{{aux?.volumeInfo?.description}}</p>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <img src="{{aux?.volumeInfo?.imageLinks?.thumbnail}}">
+            </div>
+            <div class="col-12 text-center">
+              <button class="btn btn-outline-secondary btn-sm" (click)="viewDetail(aux.id)">Veja mais</button>
+            </div>
+          </div>
         </div>
         <div class="card-footer text-muted text-center" >
           Autores-
@@ -23,8 +30,8 @@
         </div>
       </div>
     </div>
-    <div class="offset-xl-4 col-xl-4 col-lg-4 offset-lg-4 col-md-12 col-sm-12 col-12 text-center" title="click para proxima pagina">
-      <button class="btn btn-outline-secondary" (click)="nextPage()">+ next page</button>
+    <div class="offset-xl-4 col-xl-4 col-lg-4 offset-lg-4 col-md-12 col-sm-12 col-12 text-center mt-3" title="click para proxima pagina">
+      <button class="btn btn-outline-secondary btn-sm" (click)="nextPage()" *ngIf="listaBooks.length == 40">+ next page</button>
     </div>
     <div class="offset-xl-4 col-xl-4 col-lg-4 offset-lg-4 col-md-12 col-sm-12 col-12">
       <app-messenger-error [msg]="error" [type]="typeError"></app-messenger-error>

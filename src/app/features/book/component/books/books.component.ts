@@ -52,33 +52,35 @@ export class BooksComponent implements OnInit, OnDestroy {
   }
 
 
-  // public setBooksFavorires(i){
-  //   if (this.dataBooks.listBooksFavorites.length) {
-  //     const index = this.dataBooks.listBooksFavorites.findIndex((aux) =>aux.id == i.id)
-  //     if ( index != -1) {
-  //       this.dataBooks.listBooksFavorites.splice(index, 1);
-  //       console.log(index)
-  //     } else {
-  //       this.dataBooks.setListBooksFavorites(i);
-  //     }
-  //   } else {
-  //     this.dataBooks.setListBooksFavorites(i);
-  //   }
-  // }
   public setBooksFavorires(i){
-    EventEmitterService.get('favorites').emit(i.id);
+    if (this.dataBooks.listBooksFavorites.length) {
+      const index = this.dataBooks.listBooksFavorites.findIndex((aux) =>aux.id == i.id)
+      if ( index != -1) {
+        this.dataBooks.listBooksFavorites.splice(index, 1);
+        console.log(index)
+      } else {
+        this.dataBooks.setListBooksFavorites(i);
+      }
+    } else {
+      this.dataBooks.setListBooksFavorites(i);
+    }
   }
+  // public setBooksFavorires(i){
+  //   EventEmitterService.get('favorites').emit(i.id);
+  // }
 
-  public nextDays(i) {
-    this.router.navigate([`/home/days/${i}`]);
+  public viewDetail(i) {
+    this.router.navigate([`/home/detail/${i}`]);
   }
 
   public emitDados(){
-    EventEmitterService.get('dadosTempo').subscribe((data) => {
-      console.log(data.items)
+    EventEmitterService.get('dadosBook').subscribe((data) => {
       this.closeAll();
-      this._dados.push(data)
-      this._listaBooks = data.items;
+      this._dados = data;
+      this._listaBooks = data;
+      setTimeout(() => {
+        document.querySelector('#home').scrollIntoView({block: 'start',behavior: 'smooth'});
+      }, 1000);
     });
     EventEmitterService.get('error').subscribe((data) => {
       this.closeAll();
@@ -90,9 +92,6 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   public nextPage() {
     EventEmitterService.get('nextPage').emit();
-    setTimeout(() => {
-      document.querySelector('#home').scrollIntoView({block: 'end',behavior: 'smooth'});
-    }, 2000);
   }
   public closeAll() {
     this._dados = [];
