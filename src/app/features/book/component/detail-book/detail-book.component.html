@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-sm">
+            <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12 text-sm">
               <div class="row">
                 <div class="col-12">
                   {{response?.description}}
@@ -35,8 +35,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <img src="{{response?.imageLinks?.medium}}" alt="">
+            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+              <img class="height" src="{{response?.imageLinks?.medium}}" alt="{{response?.title}}">
             </div>
           </div>
         </div>
