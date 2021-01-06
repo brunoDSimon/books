@@ -97,17 +97,21 @@
   }
 }
 
-input[type="search"]::-webkit-search-cancel-button {
-  display: none;
-}
-div:focus {
-  outline: none;
+
+::-webkit-input-placeholder { /* Edge */
+  color:#DCDCDC;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
-input::placeholder {
-  color: $coin !important;
+:-ms-input-placeholder { /* Internet Explorer */
+  color:#DCDCDC;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
-*:-webkit-autofill {
-  background-color: transparent !important;
+::placeholder {
+  color:#DCDCDC;
+  font-size: 10px;
+  text-transform: uppercase;
 }

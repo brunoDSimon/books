@@ -44,9 +44,12 @@
 @import "theme/form";
 body{
     width: 100%;
-    background-color: #f0f0f0    ;
-    font-family: Calibri, KievitOT;
-
+    background-color: #f0f0f0;
+    font-family:'Montserrat' !important;
+    @font-face {
+      font-family: "Montserrat";
+      src: url("./assets/fonts/Montserrat-Regular.ttf") format("ttf"),
+    }
 }
 
 
