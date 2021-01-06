@@ -76,6 +76,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public back() {
+    EventEmitterService.get('dadosBook').emit([]);
     this.router.navigate([`/home`]);
   }
 
