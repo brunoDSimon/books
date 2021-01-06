@@ -53,6 +53,7 @@ export class BooksComponent implements OnInit, OnDestroy {
   }
 
   public setBooksFavorires(i){
+    // EventEmitterService.get('favorites').emit(i.id);
     if (this.dataBooks.listBooksFavorites.length) {
       const index = this.dataBooks.listBooksFavorites.findIndex((aux) =>aux.id == i.id)
       if ( index != -1) {

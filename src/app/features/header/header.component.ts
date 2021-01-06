@@ -13,6 +13,10 @@ import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('search') searchField: ElementRef;
+  public gapiSetup: boolean = false; // marks if the gapi library has been loaded
+  public authInstance: gapi.auth2.GoogleAuth;
+  public error: string;
+  public user: gapi.auth2.GoogleUser;
 
   public list: any = [];
   private _startIndex: any = 0;
@@ -32,18 +36,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // if (this.dataBooks.dadosUser.length) {
+    //   this.user = this.dataBooks.dadosUser[0];
+    //   this.gapiSetup = true
+    // } else {
+    //   this.checkIfUserAuthenticated();
+    //   this.user = this.authInstance.currentUser.get();
+    // }
+  }
 
-    // this.getFavorires();
-    // this.booksService.auth().subscribe((res) =>{
-    //   console.log(res)
-    // },(error) =>{
-    //   console.log(error)
-    // })
+  get userDados() {
+    return this.user;
+  }
+
+  get userAuth() {
+    return this.authInstance;
   }
 
   get favoritos() {
     return this.dataBooks.listBooksFavorites;
   }
+
 
   public formatter = (result: string) => result.toUpperCase();
 
@@ -99,6 +112,51 @@ export class HeaderComponent implements OnInit, OnDestroy {
       // EventEmitterService.get('error').emit();
       console.log(error)
     })
+  }
+
+  async initGoogleAuth(): Promise<void> {
+    //  Create a new Promise where the resolve
+    // function is the callback passed to gapi.load
+    const pload = new Promise((resolve) => {
+      gapi.load('auth2', resolve);
+    });
+    console.log(pload);
+    // When the first promise resolves, it means we have gapi
+    // loaded and that we can call gapi.init
+    return pload.then(async () => {
+      await gapi.auth2
+        .init({ client_id: '1007319950820-n846p21em6fndeq4ablm9lrbdl8dhgct.apps.googleusercontent.com' })
+        .then(auth => {
+          console.log(auth)
+          this.gapiSetup = true;
+          this.authInstance = auth;
+          this.dataBooks.clearUser();
+          this.dataBooks.setDadosUser(this.authInstance.currentUser.get())
+        });
+    });
+  }
+
+  async authenticate(): Promise<gapi.auth2.GoogleUser> {
+    // Initialize gapi if not done yet
+
+      await this.initGoogleAuth();
+
+
+    // Resolve or reject signin Promise
+    return new Promise(async () => {
+      await this.authInstance.signIn().then(
+        user => this.user = user,
+        error => this.error = error);
+    });
+  }
+
+  async checkIfUserAuthenticated(): Promise<boolean> {
+    // Initialize gapi if not done yet
+    if (!this.gapiSetup) {
+      await this.initGoogleAuth();
+    }
+
+    return this.authInstance.isSignedIn.get();
   }
 
   ngOnDestroy() {

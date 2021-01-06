@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
+    "@types/gapi": "0.0.39",
+    "@types/gapi.auth2": "0.0.52",
     "@types/jwt-decode": "^3.1.0",
     "angularx-social-login": "^3.5.4",
     "bootstrap": "^4.5.3",

@@ -18,6 +18,7 @@ import localePt from '@angular/common/locales/pt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { LoaderComponent } from './shared/componets/loader/loader.component';
 import { ToastrModule } from 'ngx-toastr';
+import { RefrashTokenInterceptor } from './shared/interceptor/RefrashToken.interceptor';
 
 registerLocaleData(localePt)
 
@@ -44,7 +45,6 @@ registerLocaleData(localePt)
   providers: [
     DateFormatPipe,
     DatePipe,
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -9,13 +9,22 @@ import { Response } from '../models/response';
 
 export class Service {
   private _headers: HttpHeaders;
+  private _headerNoAuth: HttpHeaders
   constructor() {
     this._headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+    this._headerNoAuth = new HttpHeaders({'Content-Type':  'application/json', 'Authorization': ''})
+
   }
+
 
   get headers() {
     return this._headers;
   }
+
+  get headerNoAuth() {
+    return this._headerNoAuth;
+  }
+
   filter(response: Response, calllback?: any) {
     console.log(response);
     if (response.cod  === '200') {
