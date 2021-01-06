@@ -1,8 +1,8 @@
 import { EventEmitterService } from '../../../../shared/service/event-emitter.service';
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
-import { identifierModuleUrl } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books',
@@ -18,7 +18,8 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private dataBooks: DataBooksService
+    private dataBooks: DataBooksService,
+    private toastr: ToastrService,
   ) {
     this.emitDados();
   }
@@ -51,34 +52,35 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
   }
 
-
-  // public setBooksFavorires(i){
-  //   if (this.dataBooks.listBooksFavorites.length) {
-  //     const index = this.dataBooks.listBooksFavorites.findIndex((aux) =>aux.id == i.id)
-  //     if ( index != -1) {
-  //       this.dataBooks.listBooksFavorites.splice(index, 1);
-  //       console.log(index)
-  //     } else {
-  //       this.dataBooks.setListBooksFavorites(i);
-  //     }
-  //   } else {
-  //     this.dataBooks.setListBooksFavorites(i);
-  //   }
-  // }
   public setBooksFavorires(i){
-    EventEmitterService.get('favorites').emit(i.id);
+    // EventEmitterService.get('favorites').emit(i.id);
+    if (this.dataBooks.listBooksFavorites.length) {
+      const index = this.dataBooks.listBooksFavorites.findIndex((aux) =>aux.id == i.id)
+      if ( index != -1) {
+        this.dataBooks.listBooksFavorites.splice(index, 1);
+        this.toastr.info(`Removido dos favoritos`);
+      } else {
+        this.dataBooks.setListBooksFavorites(i);
+        this.toastr.success(`Adicionado aos favoritos`);
+      }
+    } else {
+      this.dataBooks.setListBooksFavorites(i);
+      this.toastr.success(`Adicionado aos favoritos`);
+    }
   }
 
-  public nextDays(i) {
-    this.router.navigate([`/home/days/${i}`]);
+  public viewDetail(i) {
+    this.router.navigate([`/home/detail/${i}`]);
   }
 
   public emitDados(){
-    EventEmitterService.get('dadosTempo').subscribe((data) => {
-      console.log(data.items)
+    EventEmitterService.get('dadosBook').subscribe((data) => {
       this.closeAll();
-      this._dados.push(data)
-      this._listaBooks = data.items;
+      this._dados = data;
+      this._listaBooks = data;
+      setTimeout(() => {
+        document.querySelector('#home').scrollIntoView({block: 'start',behavior: 'smooth'});
+      }, 1000);
     });
     EventEmitterService.get('error').subscribe((data) => {
       this.closeAll();
@@ -90,16 +92,15 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   public nextPage() {
     EventEmitterService.get('nextPage').emit();
-    setTimeout(() => {
-      document.querySelector('#home').scrollIntoView({block: 'end',behavior: 'smooth'});
-    }, 2000);
   }
+
   public closeAll() {
     this._dados = [];
     this._listaBooks = [];
     this._typeError = '';
     this._error     = '';
   }
+
   ngOnDestroy() {
     this.closeAll();
     this.router.navigate([], {

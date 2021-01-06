@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PipeModule } from 'src/app/shared/modules/pipe.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxCurrencyModule } from "ngx-currency";
+import { NgxCurrencyModule } from 'ngx-currency';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule} from 'ngx-mask'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +11,6 @@ import { MessengerErrorComponent } from '../componets/messenger-error/messenger-
 @NgModule({
   imports: [
     CommonModule,
-    PipeModule,
     NgxCurrencyModule,
     FormsModule,
     ReactiveFormsModule,

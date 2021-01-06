@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WeatherListDaysComponent } from './component/weather-list-days/weather-list-days.component';
 import { BooksComponent } from './component/books/books.component';
+import { DetailBookComponent } from './component/detail-book/detail-book.component';
 
 const routes: Routes = [
   {path: '', component: BooksComponent},
-  {path: 'days/:id', component: WeatherListDaysComponent}
+  {path: 'detail/:id', component: DetailBookComponent}
 
 ];
 

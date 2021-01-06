@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-12 rectangle ">
       <div class="row mb-5">
-        <div class="col-12 icon-text ion-android-arrow-back text-left mt-2 cursor-pointer" (click)="back()">
+        <div class="col-6 icon-text ion-android-arrow-back text-left mt-2 cursor-pointer" (click)="back()">
+        </div>
+        <div class="col-6 mt-2">
+          <em class="ic-heart fill float-right" (click)="viewFavorites()" *ngIf="favoritos.length"></em>
         </div>
         <div class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-5 col-md-12 col-sm-12 col-12 text-center">
           <label class="title">
@@ -14,7 +17,7 @@
               class=" form-control "
               [ngbTypeahead]="search"
               [resultFormatter]="formatter"
-              placeholder=""
+              placeholder="What do you want to read?"
             />
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">
@@ -26,4 +29,7 @@
       </div>
     </div>
   </div>
+  <!-- <button (click)="authenticate()" class="auth">Authenticate</button> -->
+  <!-- <strong>User:</strong> {{user?.getBasicProfile().getEmail() | json}}, {{user?.getBasicProfile().getId() | json}}
+ {{userDados | json}} -->
 </div>

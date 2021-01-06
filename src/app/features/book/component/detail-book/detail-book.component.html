@@ -1,0 +1,52 @@
+<div class="container container-centralized mt-2" #container>
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title text-secondary font-weight-bold clearfix col-name" title="{{response?.title}}">
+            {{response?.title}}
+            <span class="ml-2 badge badge-success" [ngClass]="{'badge-info': (response?.averageRating <= 6), 'badge-danger' : (response?.averageRating < 5)}">{{response?.averageRating}}</span>
+            <span class="float-right" (click)="setBooksFavorires(responseInfo)" title="click para favoritar ">
+              <em class="" [ngClass]="[filterFill(responseInfo)]" alt="Favorito"></em>
+            </span>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12 text-sm">
+              <div class="row">
+                <div class="col-12">
+                  {{response?.description}}
+                </div>
+                <div class="col-12 mt-2">
+                  Linguagem {{response?.language}}
+                </div>
+                <div class="col-12 mt-2">
+                  Paginas {{response?.printedPageCount}}
+                </div>
+                <div class="col-12 mt-2">
+                  Editora- {{response?.publisher}}
+                </div>
+                <div class="col-12 mt-2">
+                   <a href="{{response?.previewLink}}">veja mais em</a>
+                </div>
+                <div class="col-12 mt-2">
+                   <a href="{{response?.infoLink}}">Disponivel em</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+              <img class="height" src="{{response?.imageLinks?.medium}}" alt="{{response?.title}}">
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted text-center" >
+          Autores-
+          <span *ngFor="let item of response?.authors" title="Autores {{item}}">
+            {{item}},
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

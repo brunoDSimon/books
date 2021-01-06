@@ -6,21 +6,30 @@ import { Response } from '../models/response';
 @Injectable({
   providedIn: 'root'
 })
-export class Service {
 
-  _headers: HttpHeaders;
+export class Service {
+  private _headers: HttpHeaders;
+  private _headerNoAuth: HttpHeaders
   constructor() {
     this._headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+    this._headerNoAuth = new HttpHeaders({'Content-Type':  'application/json', 'Authorization': ''})
+
   }
+
 
   get headers() {
     return this._headers;
   }
+
+  get headerNoAuth() {
+    return this._headerNoAuth;
+  }
+
   filter(response: Response, calllback?: any) {
     console.log(response);
-    if (response.cod  == '200') {
+    if (response.cod  === '200') {
       return response;
-    } else if (response.cod == '404' ) {
+    } else if (response.cod === '404' ) {
       throw new Error(response.message);
     } else {
       throw new Error(response.message);
