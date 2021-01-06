@@ -1,12 +1,9 @@
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { EventEmitterService } from 'src/app/shared/service/event-emitter.service';
 import { BooksService } from '../book/services/books.service';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
 
 @Component({
@@ -17,7 +14,6 @@ import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('search') searchField: ElementRef;
 
-  public formGroup: FormGroup
   public list: any = [];
   private _startIndex: any = 0;
   private _term;
@@ -45,6 +41,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // })
   }
 
+  get favoritos() {
+    return this.dataBooks.listBooksFavorites;
+  }
+
   public formatter = (result: string) => result.toUpperCase();
 
   public search = (text$: Observable<string>) =>text$.pipe(
@@ -52,8 +52,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     distinctUntilChanged(),
     map(term => term === '' ? []
       : this.searchBook(term)))
-
-
 
   public searchBook(value){
     EventEmitterService.get('showLoader').emit();
@@ -78,7 +76,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public back() {
-    this.router.navigate([`/home`])
+    this.router.navigate([`/home`]);
   }
 
 

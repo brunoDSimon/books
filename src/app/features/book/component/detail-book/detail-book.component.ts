@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detail-book',
@@ -16,10 +17,9 @@ export class DetailBookComponent implements OnInit, OnDestroy {
   constructor(
     private booksService: BooksService,
     private route: ActivatedRoute,
-    private datePipe: DatePipe,
     private router: Router,
-    private dataBooks: DataBooksService
-
+    private dataBooks: DataBooksService,
+    private toastr: ToastrService,
   ) {
    }
 
@@ -59,20 +59,26 @@ export class DetailBookComponent implements OnInit, OnDestroy {
       const index = this.dataBooks.listBooksFavorites.findIndex((aux) =>aux.id == i.id)
       if ( index != -1) {
         this.dataBooks.listBooksFavorites.splice(index, 1);
+        this.toastr.info(`Removido dos favoritos`);
       } else {
         this.dataBooks.setListBooksFavorites(i);
+        this.toastr.success(`Adicionado aos favoritos`);
       }
     } else {
       this.dataBooks.setListBooksFavorites(i);
+      this.toastr.success(`Adicionado aos favoritos`);
     }
   }
 
   public getBookByID(i){
+    EventEmitterService.get('showLoader').emit();
     this.booksService.getBooksById(i).subscribe((res) =>{
       this._response = res.volumeInfo;
       this._responseInfo = res;
-      console.log(this._response);
+      EventEmitterService.get('hideLoader').emit();
     },(error: Error) =>{
+      EventEmitterService.get('hideLoader').emit();
+      this.toastr.error(`Erro ao consultar`);
       console.log(error);
     })
   }

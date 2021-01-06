@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-messenger-error',
   templateUrl: './messenger-error.component.html',

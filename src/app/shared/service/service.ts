@@ -6,9 +6,9 @@ import { Response } from '../models/response';
 @Injectable({
   providedIn: 'root'
 })
-export class Service {
 
-  _headers: HttpHeaders;
+export class Service {
+  private _headers: HttpHeaders;
   constructor() {
     this._headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
   }
@@ -18,9 +18,9 @@ export class Service {
   }
   filter(response: Response, calllback?: any) {
     console.log(response);
-    if (response.cod  == '200') {
+    if (response.cod  === '200') {
       return response;
-    } else if (response.cod == '404' ) {
+    } else if (response.cod === '404' ) {
       throw new Error(response.message);
     } else {
       throw new Error(response.message);
