@@ -10,7 +10,8 @@ import { DataBooksService } from 'src/app/shared/service/dataBooks.service';
   providedIn: 'root'
 })
 export class BooksService extends Service{
- private _token = this.dataBooks.dadosUser[0].xc.access_token;
+//  private _token = this.dataBooks.dadosUser[0].xc.access_token;
+private _token = '';
 constructor(
   private http: HttpClient,
   private dataBooks: DataBooksService
